@@ -1,38 +1,36 @@
 import mongoose, { Schema, Document } from "mongoose";
-import Joi, { string } from "joi";
-
-export const UserSchemaVali = Joi.object({
-  name: Joi.string().required(),
-  email: Joi.string().email().required(),
-  password: Joi.string().required(),
-  role: Joi.string().valid("admin", "user", "editor").default("user"),
-  status: Joi.boolean().default(true),
-});
-
-export const LoginSchemaVali = Joi.object({
-  email: Joi.string().email().required(),
-  password: Joi.string().required(),
-});
-
-interface IUser extends Document {
-  name: string;
-  email: string;
-  password: string;
-  role: "admin" | "user" | "editor";
-  status: boolean;
-}
+import Joi from "joi";
 
 const UserSchema: Schema = new Schema(
   {
-    name: { type: String, required: true },
-    email: { type: String, required: true },
+    personId: { type: Schema.Types.ObjectId, ref: "Person", required: true },
+    username: { type: String, required: true, unique: true },
     password: { type: String, required: true, unique: true }, 
-    role: { type: String, enum: ["admin", "user", "editor"], default: "user" },
-    status: { type: Boolean, default: true },
   },
   {
     timestamps: true, // Agrega automáticamente createdAt y updatedAt
   }
 );
+
+interface IUser extends Document {
+  personId: mongoose.Types.ObjectId;
+  username: string;
+  password: string;
+}
+
+export const UserSchemaVali = Joi.object({
+  personId: Joi.string().required(),
+  username: Joi.string().required(),
+  password: Joi.string().required(),
+});
+
+export const LoginSchemaVali = Joi.object({
+  username: Joi.string().required(),
+  password: Joi.string().required(),
+});
+
+
+
+
 
 export default mongoose.model<IUser>("User", UserSchema);

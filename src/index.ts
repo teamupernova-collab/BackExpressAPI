@@ -2,12 +2,10 @@ import express, { Request, Response, NextFunction } from "express";
 import { conDB } from "../src/connect/DBconnect";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-import tasksRoutes from "../src/routes/taskRoutes";
 import userRoutes from "../src/routes/userRoutes";
 import authRoutes from "../src/routes/authRoutes"
-import projectRoutes from '../src/routes/projectRoutes'
-import commentRoutes from '../src/routes/commentRoutes'
-import tagRoutes from '../src/routes/tagRoutes'
+import personRoutes from "../src/routes/personRoutes";
+
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -29,12 +27,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 //routes
-app.use("/api/tasks", tasksRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
-app.use("/api/project", projectRoutes)
-app.use("/api/comment", commentRoutes)
-app.use("/api/tag", tagRoutes)
+app.use("/api/person", personRoutes);
+
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   console.error(err.stack);

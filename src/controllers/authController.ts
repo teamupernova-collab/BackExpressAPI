@@ -36,7 +36,8 @@ class authController {
       const UserOb = user.toObject();
       const { password: _, ...UserRes } = UserOb;
 
-      const token = jwt.sign({ id: user._id, role: user.role }, JWT_SECRET, { expiresIn: "24h" });
+      //const token = jwt.sign({ id: user._id, role: user.role }, JWT_SECRET, { expiresIn: "24h" });
+      const token = jwt.sign({ id: user._id }, JWT_SECRET, { expiresIn: "24h" });
 
       res.cookie("token", token, {
         httpOnly: true,

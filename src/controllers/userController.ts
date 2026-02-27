@@ -13,16 +13,14 @@ class userController {
     }
 
     try {
-      const { name, email, password, role, status } = req.body;
+      const { username, password, personId } = req.body;
 
       const hashedPassword = await bcrypt.hash(password, 10);
 
       const newUser = await User.create({
-        name,
-        email,
+        username,
+        personId,
         password: hashedPassword,
-        role,
-        status,
       });
 
       const UserOb = newUser.toObject();

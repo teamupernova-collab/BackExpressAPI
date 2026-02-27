@@ -1,22 +1,23 @@
 import { Router} from "express";
 import { userControllers } from "../controllers/userController";
-import { authMiddleware, authRoles  } from "../middleware/auth";
+//import { authMiddleware, authRoles  } from "../middleware/auth";
+//TODO: agregar authMiddleware y authRoles a las rutas que lo requieran
 
 const router = Router();
 
 // create user
-router.post("/register", authMiddleware, authRoles("admin", "editor"), userControllers.addUser);
+router.post("/register", userControllers.addUser);
 
 //get users 
-router.get("/", authMiddleware, authRoles("admin", "editor"), userControllers.getUsers)
+router.get("/", userControllers.getUsers)
 
 // update user
-router.put("/:id", authMiddleware, authRoles("admin", "editor"), userControllers.updateUser);
+router.put("/:id", userControllers.updateUser);
 
 // delete user
-router.delete("/:id", authMiddleware, authRoles("admin", "editor"), userControllers.deleteUser);
+router.delete("/:id", userControllers.deleteUser);
 
 // get user by id
-router.get("/:id", authMiddleware, authRoles("admin", "editor"), userControllers.getUserById);
+router.get("/:id", userControllers.getUserById);
 
 export default router;

@@ -16,7 +16,7 @@ app.use(cookieParser());
 // Configuración de CORS
 app.use(
   cors({
-    origin: "http://localhost:5173", // Cambia esto al dominio de tu frontend
+    //origin: "http://localhost:5173", // Cambia esto al dominio de tu frontend
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"],
     credentials: true,

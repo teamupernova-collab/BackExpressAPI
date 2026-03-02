@@ -5,7 +5,7 @@ const UserSchema: Schema = new Schema(
   {
     personId: { type: Schema.Types.ObjectId, ref: "Person", required: true },
     username: { type: String, required: true, unique: true },
-    password: { type: String, required: true, unique: true }, 
+    password: { type: String, required: true }, 
   },
   {
     timestamps: true, // Agrega automáticamente createdAt y updatedAt

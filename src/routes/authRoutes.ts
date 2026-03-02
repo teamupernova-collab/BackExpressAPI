@@ -12,4 +12,6 @@ router.post("/logout", authControllers.logout);
 // validate token
 router.get("/check", authControllers.checkToken);
 
+router.post("/register", authControllers.register);
+
 export default router;

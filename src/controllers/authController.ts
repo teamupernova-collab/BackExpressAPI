@@ -1,6 +1,8 @@
 import { Request, Response } from "express";
+import mongoose from "mongoose";
 import { LoginSchemaVali } from "../models/user";
 import User from "../models/user";
+import Person from "../models/person";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
@@ -82,6 +84,47 @@ class authController {
       } catch (error) {
         res.status(200).send({ authenticated: false });
       }
+  }
+
+  register = async (req: Request, res: Response) => {
+    const session = await mongoose.startSession();
+    session.startTransaction();
+
+    try {
+      const { name, lastname, username, password } = req.body;
+
+      const existingUser = await User.findOne({ username });
+
+      if (existingUser) {
+        res.status(400).send({ message: "Username ya existe" });
+        return 
+      }
+
+      const person = await Person.create([{ name, lastname }], { session });
+
+      const hashedPassword = await bcrypt.hash(password, 10);
+
+      const user = await User.create([{
+        personId: person[0]._id,
+        username,
+        password: hashedPassword
+      }], { session });
+
+      await session.commitTransaction();
+      session.endSession();
+
+      res.status(201).send({
+        message: "Usuario creado correctamente",
+        userId: user[0]._id,
+      });
+      return 
+
+    } catch (error) {
+      await session.abortTransaction();
+      session.endSession();
+      res.status(500).send({ message: "Error al registrar usuario" });
+      return 
+    }
   }
 }
 

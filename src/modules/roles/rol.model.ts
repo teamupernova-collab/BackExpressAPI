@@ -14,4 +14,4 @@ const RolSchema: Schema = new Schema(
 );
 
 
-export default mongoose.model<IRol>("Person", RolSchema);
+export default mongoose.model<IRol>("roles", RolSchema);

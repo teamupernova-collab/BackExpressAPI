@@ -1,11 +1,9 @@
 import express, { Request, Response, NextFunction } from "express";
-import { conDB } from "../src/connect/DBconnect";
+import { conDB } from "./database/connection";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-import userRoutes from "../src/routes/userRoutes";
-import authRoutes from "../src/routes/authRoutes"
-import personRoutes from "../src/routes/personRoutes";
-
+import routes from "./routes";
+import { errorMiddleware } from "./middleware/error.middlware"
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -23,13 +21,14 @@ app.use(
   })
 );
 
+//middlewares
+app.use(errorMiddleware);
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 //routes
-app.use("/api/auth", authRoutes);
-app.use("/api/user", userRoutes);
-app.use("/api/person", personRoutes);
+app.use("/api", routes);
 
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {

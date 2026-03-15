@@ -1,10 +1,10 @@
 import { Router } from "express"
-import userRoutes from "../modules/users/user.routes"
+import userRoutes from "../modules/user/user.routes"
 import authRoutes from "../modules/auth/auth.routes"
-import personRoutes from "../modules/persons/person.routes"
-import rolRoutes from "../modules/roles/rol.routes"
-import companyRoutes from '../modules/companies/company.routes';
-import employeeRoutes from '../modules/employees/employee.routes'
+import personRoutes from "../modules/person/person.routes"
+import rolRoutes from "../modules/rol/rol.routes"
+import companyRoutes from '../modules/company/company.routes';
+import employeeRoutes from '../modules/employee/employee.routes'
 
 const router = Router()
 

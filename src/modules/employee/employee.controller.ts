@@ -4,7 +4,7 @@ import { CreateEmployeeSchema } from "./employee.schema";
 import { CreateEmployeeDTO, UpdateEmployeeDTO } from "./employee.types"
 import { asyncHandler } from "../../utils/asyncHandler"; 
 
-class EmployeeContEmployeeler {
+class EmployeeController {
   addEmployee = asyncHandler(async (req: Request, res: Response) => {
       const { error } = CreateEmployeeSchema.validate(req.body);
 
@@ -59,4 +59,4 @@ class EmployeeContEmployeeler {
   });
 }
 
-export default new EmployeeContEmployeeler();
+export default new EmployeeController();

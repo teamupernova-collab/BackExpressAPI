@@ -1,8 +1,8 @@
 import bcrypt from "bcryptjs";
 import mongoose from "mongoose";
 import jwt from "jsonwebtoken";
-import { PersonService } from "../persons/person.services";
-import { UserService } from "../users/user.services";
+import { PersonService } from "../person/person.services";
+import { UserService } from "../user/user.services";
 import { RegisterDTO, LoginDTO } from "./auth.types";
 
 const JWT_SECRET = process.env.JWT_SECRET || "";

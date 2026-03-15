@@ -8,7 +8,8 @@
     "dev": "nodemon src/index.ts",
     "build": "tsc",
     "serve": "node dist/index.js",
-    "test": "ts-node src/index.ts"
+    "test": "ts-node src/index.ts",
+    "generate:module": "node scripts/generate-module.js"
   },
   "author": "oscararreola",
   "license": "ISC",

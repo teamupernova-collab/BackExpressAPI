@@ -30,6 +30,11 @@ app.use(express.urlencoded({ extended: true }));
 //routes
 app.use("/api", routes);
 
+// Ruta raíz para verificar el estado del servicio
+app.get('/', (req: Request, res: Response) => {
+  res.json({ mensaje: 'Bienvenido: Servicio activo' });
+});
+
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   console.error(err.stack);

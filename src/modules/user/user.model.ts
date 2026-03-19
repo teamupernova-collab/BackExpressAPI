@@ -1,14 +1,14 @@
 import mongoose, { Schema, Document } from "mongoose";
 
 export interface IUser extends Document {
-  personId: mongoose.Types.ObjectId;
+  personID: mongoose.Types.ObjectId;
   username: string;
   password: string;
 }
 
 const UserSchema: Schema = new Schema(
   {
-    personId: {
+    personID: {
       type: Schema.Types.ObjectId,
       ref: "persons",
       required: true,

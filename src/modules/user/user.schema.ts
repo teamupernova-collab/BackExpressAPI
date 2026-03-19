@@ -1,7 +1,7 @@
 import Joi from "joi"
 
 export const createUserSchema = Joi.object({
-  personId: Joi.string().required(),
+  personID: Joi.string().required(),
   username: Joi.string().required(),
   password: Joi.string().required(),
 })

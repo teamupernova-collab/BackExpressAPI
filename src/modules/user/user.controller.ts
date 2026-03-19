@@ -18,14 +18,14 @@ class UserController {
       });
     }
 
-    const { username, password, personId } = req.body;
+    const { username, password, personID } = req.body;
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const data: CreateUserDTO = {
       username,
       password: hashedPassword,
-      personId
+      personID
     };
 
     const user = await UserService.createUser(data);

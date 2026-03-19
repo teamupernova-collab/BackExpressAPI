@@ -35,7 +35,7 @@ export class AuthService {
         {
           username,
           password: hashedPassword,
-          personId: person._id.toString()
+          personID: person._id.toString()
         },
         session
       );

@@ -6,6 +6,7 @@ import rolRoutes from "../modules/rol/rol.routes"
 import companyRoutes from '../modules/company/company.routes';
 import employeeRoutes from '../modules/employee/employee.routes'
 import clientRoutes from '../modules/client/client.routes'
+import orderRoutes from '../modules/order/order.routes'
 
 const router = Router()
 
@@ -16,5 +17,6 @@ router.use("/roles", rolRoutes)
 router.use("/company", companyRoutes)
 router.use("/employee" , employeeRoutes)
 router.use("/client", clientRoutes)
+router.use("/order", orderRoutes)
 
 export default router

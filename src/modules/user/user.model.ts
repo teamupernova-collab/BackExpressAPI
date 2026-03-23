@@ -1,15 +1,10 @@
-import mongoose, { Schema, Document } from "mongoose";
+import mongoose, { Schema, Types } from "mongoose";
+import { User } from "./user.schema";
 
-export interface IUser extends Document {
-  personID: mongoose.Types.ObjectId;
-  username: string;
-  password: string;
-}
-
-const UserSchema: Schema = new Schema(
+const UserSchema: Schema = new Schema<User>(
   {
     personID: {
-      type: Schema.Types.ObjectId,
+      type: Types.ObjectId,
       ref: "persons",
       required: true,
     },
@@ -28,4 +23,4 @@ const UserSchema: Schema = new Schema(
   },
 );
 
-export default mongoose.model<IUser>("users", UserSchema);
+export default mongoose.model<User>("users", UserSchema);

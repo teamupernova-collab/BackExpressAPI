@@ -1,22 +1,12 @@
 import { Request, Response } from "express";
 import bcrypt from "bcryptjs";
 import { UserService } from "./user.services";
-import { createUserSchema } from "./user.schema";
-import { CreateUserDTO, UpdateUserDTO } from "./user.types";
+import { CreateUserDTO, UpdateUserDTO } from "./user.schema";
 import { asyncHandler } from "../../utils/asyncHandler";
 
 class UserController {
 
   addUser = asyncHandler(async (req: Request, res: Response) => {
-
-    const { error } = createUserSchema.validate(req.body);
-
-    if (error) {
-      return res.status(400).json({
-        code: "VALIDATION_ERROR",
-        msg: error.message
-      });
-    }
 
     const { username, password, personID } = req.body;
 

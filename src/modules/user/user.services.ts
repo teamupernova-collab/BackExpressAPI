@@ -1,4 +1,4 @@
-import { CreateUserDTO, UpdateUserDTO } from "./user.types"
+import { CreateUserDTO, UpdateUserDTO } from "./user.schema"
 import User from "./user.model"
 import { ClientSession } from "mongoose"
 

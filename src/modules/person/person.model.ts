@@ -1,11 +1,7 @@
-import { Schema, model, Types } from "mongoose";
+import { Schema, model } from "mongoose";
+import { Person } from "./person.schema";
 
-export interface IPerson {
-  name: string
-  lastname: string
-}
-
-const PersonSchema = new Schema<IPerson>(
+const PersonSchema = new Schema<Person>(
   {
     name: { type: String, required: true },
     lastname: { type: String, required: true }
@@ -13,4 +9,4 @@ const PersonSchema = new Schema<IPerson>(
   { timestamps: true }
 );
 
-export default model<IPerson>("persons", PersonSchema);
+export default model<Person>("persons", PersonSchema);

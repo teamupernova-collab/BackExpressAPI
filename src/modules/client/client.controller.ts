@@ -1,16 +1,10 @@
 import { Request, Response } from "express";
 import { ClientService } from "./client.services";
-import { CreateClientSchema } from "./client.schema";
-import { CreateClientDTO, UpdateClientDTO } from "./client.types"
+import { CreateClientDTO, UpdateClientDTO} from "./client.schema";
 import { asyncHandler } from "../../utils/asyncHandler"; 
 
 class ClientController {
   addClient = asyncHandler(async (req: Request, res: Response) => {
-      const { error } = CreateClientSchema.validate(req.body);
-
-      if (error) {
-        return res.status(400).send(error.message);
-      }
 
       const data: CreateClientDTO = req.body
     

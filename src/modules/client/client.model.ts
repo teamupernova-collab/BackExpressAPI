@@ -1,14 +1,10 @@
-import mongoose, { Schema, Document } from "mongoose";
+import mongoose, { Schema, Types } from "mongoose";
+import { Client } from "./client.schema";
 
-interface IClient extends Document {
-  userID: mongoose.Types.ObjectId;
-  isActive: boolean;
-}
-
-const ClientSchema: Schema = new Schema(
+const ClientSchema: Schema = new Schema<Client>(
   {
     userID: {
-      type: Schema.Types.ObjectId,
+      type: Types.ObjectId,
       ref: "users",
       required: true,
     },
@@ -17,4 +13,4 @@ const ClientSchema: Schema = new Schema(
   { timestamps: true },
 );
 
-export default mongoose.model<IClient>("clients", ClientSchema);
+export default mongoose.model<Client>("clients", ClientSchema);

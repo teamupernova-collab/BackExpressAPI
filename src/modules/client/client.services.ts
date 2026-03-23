@@ -1,4 +1,4 @@
-import { CreateClientDTO, UpdateClientDTO } from "./client.types"
+import { CreateClientDTO, UpdateClientDTO } from "./client.schema"
 import Client from "./client.model"
 import { ClientSession } from "mongoose"
 

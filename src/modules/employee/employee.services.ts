@@ -1,4 +1,4 @@
-import { CreateEmployeeDTO, UpdateEmployeeDTO } from "./employee.types"
+import { CreateEmployeeDTO, UpdateEmployeeDTO } from "./employee.schema"
 import Employee from "./employee.model"
 import { ClientSession } from "mongoose"
 

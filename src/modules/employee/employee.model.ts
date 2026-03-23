@@ -1,13 +1,7 @@
-import mongoose, { Schema, Document } from "mongoose";
+import mongoose, { Schema, Types } from "mongoose";
+import { Employee } from "./employee.schema";
 
-interface IEmployee extends Document {
-  userID: mongoose.Types.ObjectId;
-  companyID: mongoose.Types.ObjectId;
-  rolID: mongoose.Types.ObjectId;
-  isActive: boolean;
-}
-
-const EmployeeSchema: Schema = new Schema(
+const EmployeeSchema: Schema = new Schema<Employee>(
   {
     userID: {
       type: Schema.Types.ObjectId,
@@ -29,4 +23,4 @@ const EmployeeSchema: Schema = new Schema(
   { timestamps: true },
 );
 
-export default mongoose.model<IEmployee>("employees", EmployeeSchema);
+export default mongoose.model<Employee>("employees", EmployeeSchema);

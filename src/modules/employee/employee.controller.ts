@@ -1,17 +1,11 @@
 import { Request, Response } from "express";
 import { EmployeeService } from "./employee.services";
-import { CreateEmployeeSchema } from "./employee.schema";
-import { CreateEmployeeDTO, UpdateEmployeeDTO } from "./employee.types"
+import { CreateEmployeeDTO, UpdateEmployeeDTO } from "./employee.schema"
 import { asyncHandler } from "../../utils/asyncHandler"; 
 
 class EmployeeController {
   addEmployee = asyncHandler(async (req: Request, res: Response) => {
-      const { error } = CreateEmployeeSchema.validate(req.body);
-
-      if (error) {
-        return res.status(400).send(error.message);
-      }
-
+    
       const data: CreateEmployeeDTO = req.body
     
       const Employee  = await EmployeeService.createEmployee(data);

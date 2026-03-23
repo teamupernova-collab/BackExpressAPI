@@ -10,9 +10,9 @@ import orderRoutes from '../modules/order/order.routes'
 
 const router = Router()
 
-router.use("/users", userRoutes)
+router.use("/user", userRoutes)
 router.use("/auth", authRoutes)
-router.use("/persons", personRoutes)
+router.use("/person", personRoutes)
 router.use("/roles", rolRoutes)
 router.use("/company", companyRoutes)
 router.use("/employee" , employeeRoutes)

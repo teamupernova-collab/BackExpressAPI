@@ -20,7 +20,6 @@ const files = [
   "routes",
   "schema",
   "services",
-  "types"
 ];
 
 if (!fs.existsSync(modulePath)) {

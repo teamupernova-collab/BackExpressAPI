@@ -1,16 +1,10 @@
 import { Request, Response } from "express";
 import { {{Name}}Service } from "./{{name}}.services";
-import { Create{{Name}}Schema } from "./{{name}}.schema";
-import { Create{{Name}}DTO, Update{{Name}}DTO } from "./{{name}}.types"
+import { Create{{Name}}Schema, Update{{Name}}DTO } from "./{{name}}.schema";
 import { asyncHandler } from "../../utils/asyncHandler"; 
 
 class {{Name}}Controller {
   add{{Name}} = asyncHandler(async (req: Request, res: Response) => {
-      const { error } = Create{{Name}}Schema.validate(req.body);
-
-      if (error) {
-        return res.status(400).send(error.message);
-      }
 
       const data: Create{{Name}}DTO = req.body
     

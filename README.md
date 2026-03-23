@@ -12,3 +12,7 @@ proyecto para el back usando Node Express
 
 ## Uso
 - El servidor se ejecutará en `http://localhost:3000`.
+
+
+## Generar modulo atrevez de templates
+- en terminal  npm run generate:module modulo

@@ -1,13 +1,11 @@
-import mongoose, { Schema, Document } from "mongoose";
+import { Schema, model } from "mongoose";
+import { {{Name}} } from "./{{name}}.schema";
 
-interface I{{Name}} extends Document {
-
-}
-
-const {{Name}}Schema: Schema = new Schema(
-    {
-    },
-    { timestamps: true },
+const {{Name}}Schema = new Schema<{{Name}}>(
+  {
+   
+  },
+  { timestamps: true }
 );
 
-export default mongoose.model<I{{Name}}>("{{name}}s", {{Name}}Schema);
+export default model<{{Name}}>("{{name}}s", {{Name}}Schema);

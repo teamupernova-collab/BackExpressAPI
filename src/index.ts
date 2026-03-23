@@ -1,9 +1,12 @@
 import express, { Request, Response, NextFunction } from "express";
-import { conDB } from "./database/connection";
+import swaggerUi from "swagger-ui-express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+
+import { conDB } from "./database/connection";
 import routes from "./routes";
 import { errorMiddleware } from "./middleware/error.middlware"
+import { generateSwagger } from "./config/swagger";
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -29,6 +32,11 @@ app.use(express.urlencoded({ extended: true }));
 
 //routes
 app.use("/api", routes);
+
+// swagger
+const swaggerSpec = generateSwagger();
+
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Ruta raíz para verificar el estado del servicio
 app.get('/', (req: Request, res: Response) => {

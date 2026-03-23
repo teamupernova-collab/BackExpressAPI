@@ -1,16 +1,10 @@
 import { Request, Response } from "express";
 import { CompanyService } from "./company.services";
-import { CreateCompanySchema } from "./company.schema";
-import { CreateCompanyDTO, UpdateCompanyDTO } from "./company.types"
+import { CreateCompanyDTO, UpdateCompanyDTO } from "./company.schema"
 import { asyncHandler } from "../../utils/asyncHandler"; 
 
 class CompanyContCompanyler {
   addCompany = asyncHandler(async (req: Request, res: Response) => {
-      const { error } = CreateCompanySchema.validate(req.body);
-
-      if (error) {
-        return res.status(400).send(error.message);
-      }
 
       const data: CreateCompanyDTO = req.body
     

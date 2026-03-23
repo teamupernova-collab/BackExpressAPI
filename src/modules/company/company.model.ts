@@ -1,13 +1,7 @@
-import mongoose, { Schema, Document } from "mongoose";
+import mongoose, { Schema } from "mongoose";
+import { Company } from "./company.schema";
 
-interface ICompany extends Document {
-  legalName: string;
-  description: string;
-  rfc: string;
-  status: boolean;
-}
-
-const CompanySchema: Schema = new Schema(
+const CompanySchema: Schema = new Schema<Company>(
   {
      legalName: {
       type: String,
@@ -26,4 +20,4 @@ const CompanySchema: Schema = new Schema(
   { timestamps: true },
 );
 
-export default mongoose.model<ICompany>("companies", CompanySchema);
+export default mongoose.model<Company>("companies", CompanySchema);

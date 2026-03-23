@@ -1,4 +1,4 @@
-import { CreateOrderDTO, UpdateOrderDTO } from "./order.types"
+import { CreateOrderDTO, UpdateOrderDTO } from "./order.schema"
 import Order from "./order.model"
 import { ClientSession } from "mongoose"
 

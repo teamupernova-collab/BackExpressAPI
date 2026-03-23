@@ -1,18 +1,30 @@
 import { Request, Response } from "express";
 import { OrderService } from "./order.services";
-import { CreateOrderSchema } from "./order.schema";
-import { CreateOrderDTO, UpdateOrderDTO } from "./order.types"
+import { CreateOrderDTO, UpdateOrderDTO } from "./order.schema"
 import { asyncHandler } from "../../utils/asyncHandler"; 
+import { ClientService } from "../client/client.services";
+import { CompanyService } from "../company/company.services";
+import { EmployeeService } from "../employee/employee.services";
 
 class OrderController {
   addOrder = asyncHandler(async (req: Request, res: Response) => {
-      const { error } = CreateOrderSchema.validate(req.body);
-
-      if (error) {
-        return res.status(400).send(error.message);
-      }
 
       const data: CreateOrderDTO = req.body
+
+      const client = ClientService.getById(data.clientID)
+      if (!client) {
+        return res.status(404).send({ code: "NOT_FOUND" });
+      }
+
+      const company = CompanyService.getById(data.companyID)
+      if (!company) {
+         return res.status(404).send({ code: "NOT_FOUND" });
+      }
+
+      const employye = EmployeeService.getById(data.employeeID);
+      if (!employye) {
+        return res.status(404).send({ code: "NOT_FOUND" });
+      }
     
       const Order  = await OrderService.createOrder(data);
 

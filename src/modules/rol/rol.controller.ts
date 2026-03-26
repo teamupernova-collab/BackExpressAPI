@@ -1,16 +1,10 @@
 import { Request, Response } from "express";
 import { RolService } from "./rol.services";
-import { CreateRolSchema } from "./rol.schema";
-import { CreateRolDTO, UpdateRolDTO } from "./rol.types"
+import { CreateRolDTO, UpdateRolDTO } from "./rol.schema"
 import { asyncHandler } from "../../utils/asyncHandler"; 
 
 class RolController {
   addRol = asyncHandler(async (req: Request, res: Response) => {
-      const { error } = CreateRolSchema.validate(req.body);
-
-      if (error) {
-        return res.status(400).send(error.message);
-      }
 
       const data: CreateRolDTO = req.body
     

@@ -1,11 +1,7 @@
-import mongoose, { Schema, Document } from "mongoose";
+import mongoose, { Schema, Types } from "mongoose";
+import { Rol } from "./rol.schema";
 
-interface IRol extends Document {
-    name: string;
-    description: string;
-}
-
-const RolSchema: Schema = new Schema(
+const RolSchema: Schema = new Schema<Rol>(
     {
         name: { type: String, required: true },
         description: { type: String, required: true },
@@ -14,4 +10,4 @@ const RolSchema: Schema = new Schema(
 );
 
 
-export default mongoose.model<IRol>("roles", RolSchema);
+export default mongoose.model<Rol>("roles", RolSchema);

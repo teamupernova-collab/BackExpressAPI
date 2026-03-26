@@ -1,4 +1,4 @@
-import { CreateRolDTO, UpdateRolDTO } from "./rol.types"
+import { CreateRolDTO, UpdateRolDTO } from "./rol.schema"
 import Rol from "./rol.model"
 import { ClientSession } from "mongoose"
 

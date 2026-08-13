@@ -16,7 +16,12 @@ export const generateSwagger = () => {
     },
     servers: [
       {
+        url: "https://upernovaapi.onrender.com/",
+        description: "Servidor de Producción (Render)",
+      },
+      {
         url: "http://localhost:8080/",
+        description: "Servidor Local (Desarrollo)",
       },
     ],
   });
